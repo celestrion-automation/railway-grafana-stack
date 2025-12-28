@@ -2,9 +2,11 @@ global:
   scrape_interval: 15s # Default scrape interval
 
 scrape_configs:
-  - job_name: 'prometheus'
+  - job_name: 'n8n'
+    metrics_path: '/metrics'
+    scrape_interval: 15s
     static_configs:
-      - targets: ['localhost:9090']
+      - targets: ['primary:5678']  # <--- "primary" matches your n8n service name
 
   # - job_name: 'example_api'
   #   scheme: http
